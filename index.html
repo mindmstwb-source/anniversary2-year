@@ -8,24 +8,17 @@
     <style>
         :root { --main-pink: #ffafcc; --bg-soft: #fff5f7; }
         body { font-family: 'Mali', cursive; background-color: var(--bg-soft); text-align: center; margin: 0; overflow-x: hidden; color: #5a3e5a; }
-        
-        /* หน้า Login */
         #login-screen { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--main-pink); display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 1000; color: white; transition: 0.8s; }
         .login-box { background: white; padding: 30px; border-radius: 25px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); color: #333; width: 85%; max-width: 320px; }
         input { padding: 12px; border: 2px solid #eee; border-radius: 15px; width: 80%; text-align: center; margin: 15px 0; font-size: 1.1rem; outline: none; font-family: 'Mali'; }
         .btn { background: var(--main-pink); color: white; border: none; padding: 12px 30px; border-radius: 20px; cursor: pointer; font-weight: bold; font-family: 'Mali'; font-size: 1rem; }
-
-        /* หน้าหลัก */
         #main-content { display: none; padding: 20px; padding-bottom: 100px; animation: fadeIn 1.2s; }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-
         .menu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 25px; }
         .menu-card { background: white; padding: 20px; border-radius: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); cursor: pointer; }
-        
         .section { display: none; background: white; padding: 20px; border-radius: 20px; margin-top: 20px; text-align: left; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
         .polaroid { background: white; padding: 10px 10px 30px 10px; box-shadow: 0 8px 20px rgba(0,0,0,0.1); margin: 20px auto; max-width: 280px; transform: rotate(-2deg); }
         .polaroid img { width: 100%; border-radius: 5px; }
-
         .heart { position: fixed; bottom: -10%; font-size: 20px; animation: float 4s linear infinite; z-index: -1; pointer-events: none; }
         @keyframes float { 0% { transform: translateY(0) rotate(0); opacity: 1; } 100% { transform: translateY(-110vh) rotate(360deg); opacity: 0; } }
     </style>
@@ -74,31 +67,23 @@
     </div>
 
     <script>
-        const music = document.getElementById('music');
-
         function check() {
             const passValue = document.getElementById('pass').value;
+            const music = document.getElementById('music');
+            
             if(passValue === "010167") {
-                // ซ่อนหน้า Login
+                // สั่งเล่นเพลงทันทีที่กดปุ่ม
+                music.play().then(() => {
+                    console.log("Music Playing!");
+                }).catch(() => {
+                    // ถ้าเบราว์เซอร์บล็อก ให้รอจิ้มหน้าจออีกรอบ
+                    document.body.addEventListener('click', () => { music.play(); }, { once: true });
+                });
+
                 document.getElementById('login-screen').style.opacity = '0';
-                
                 setTimeout(() => {
                     document.getElementById('login-screen').style.display = 'none';
                     document.getElementById('main-content').style.display = 'block';
-                    
-                    // พยายามเล่นเพลง
-                    const playPromise = music.play();
-                    if (playPromise !== undefined) {
-                        playPromise.catch(() => {
-                            // ถ้าเบราว์เซอร์บล็อก ให้รอการสัมผัสหน้าจอ
-                            console.log("Autoplay blocked. Tap anywhere to play.");
-                            document.body.addEventListener('click', () => {
-                                music.play();
-                            }, { once: true });
-                        });
-                    }
-                    
-                    // เริ่มสร้างหัวใจ
                     setInterval(createH, 400);
                 }, 800);
             } else { 
