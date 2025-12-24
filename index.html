@@ -101,5 +101,35 @@
             document.body.appendChild(h); setTimeout(() => h.remove(), 4000);
         }
     </script>
+    function check() {
+    const pass = document.getElementById('pass').value;
+    const music = document.getElementById('music');
+    
+    if(pass === "010167") {
+        document.getElementById('login-screen').style.opacity = '0';
+        setTimeout(() => {
+            document.getElementById('login-screen').style.display = 'none';
+            document.getElementById('main-content').style.display = 'block';
+            
+            // พยายามเล่นเพลง
+            const playPromise = music.play();
+            if (playPromise !== undefined) {
+                playPromise.then(_ => {
+                    // เล่นเพลงสำเร็จ
+                }).catch(error => {
+                    // ถ้าเล่นไม่ได้ ให้ลองเล่นอีกครั้งเมื่อผู้ใช้คลิกอะไรก็ได้ในหน้าเว็บ
+                    console.log("Autoplay blocked, waiting for interaction");
+                    document.body.addEventListener('click', () => {
+                        music.play();
+                    }, { once: true });
+                });
+            }
+            
+            setInterval(createH, 400);
+        }, 800);
+    } else { 
+        alert("รหัสผ่านไม่ถูกต้องนะเจ้าตัวเล็ก!"); 
+    }
+}
 </body>
 </html>
