@@ -6,21 +6,28 @@
     <title>Happy 2nd Anniversary ❤️</title>
     <link href="https://fonts.googleapis.com/css2?family=Mali:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        :root { --main-color: #ff8fab; --bg-color: #fff0f5; }
-        body { font-family: 'Mali', cursive; background-color: var(--bg-color); text-align: center; margin: 0; overflow-x: hidden; }
-        #login-screen { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--main-color); display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 1000; color: white; }
-        .login-box { background: white; padding: 30px; border-radius: 25px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); color: #333; width: 80%; max-width: 300px; }
-        input { padding: 12px; border: 2px solid #eee; border-radius: 15px; width: 80%; text-align: center; margin: 15px 0; font-size: 1.1rem; }
-        .btn { background: var(--main-color); color: white; border: none; padding: 12px 30px; border-radius: 20px; cursor: pointer; font-weight: bold; }
-        #main-content { display: none; padding: 20px; animation: fadeIn 1s; }
+        :root { --main-color: #ffafcc; --bg-color: #fff5f7; }
+        body { font-family: 'Mali', cursive; background-color: var(--bg-color); text-align: center; margin: 0; overflow-x: hidden; color: #5a3e5a; }
+        
+        /* หน้า Login */
+        #login-screen { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--main-color); display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 1000; color: white; transition: 0.8s; }
+        .login-box { background: white; padding: 30px; border-radius: 25px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); color: #333; width: 85%; max-width: 320px; }
+        input { padding: 12px; border: 2px solid #eee; border-radius: 15px; width: 80%; text-align: center; margin: 15px 0; font-size: 1.1rem; outline: none; }
+        .btn { background: var(--main-color); color: white; border: none; padding: 12px 30px; border-radius: 20px; cursor: pointer; font-weight: bold; font-family: 'Mali'; }
+
+        /* หน้าหลัก */
+        #main-content { display: none; padding: 20px; padding-bottom: 100px; animation: fadeIn 1s; }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
         .menu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 20px; }
         .menu-card { background: white; padding: 20px; border-radius: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); cursor: pointer; }
+        
         .section { display: none; background: white; padding: 20px; border-radius: 20px; margin-top: 20px; text-align: left; }
-        .polaroid { background: white; padding: 10px 10px 30px 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); margin: 20px auto; max-width: 250px; transform: rotate(-2deg); }
+        .polaroid { background: white; padding: 10px 10px 30px 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); margin: 20px auto; max-width: 280px; transform: rotate(-2deg); }
         .polaroid img { width: 100%; border-radius: 5px; }
+
         .heart { position: fixed; bottom: -10%; font-size: 20px; animation: float 4s linear infinite; z-index: -1; }
-        @keyframes float { 0% { transform: translateY(0); } 100% { transform: translateY(-110vh) opacity: 0; } }
+        @keyframes float { 0% { transform: translateY(0); } 100% { transform: translateY(-110vh); opacity: 0; } }
     </style>
 </head>
 <body>
@@ -29,46 +36,59 @@
         <div class="login-box">
             <h3 style="margin-top:0;">ใส่รหัสผ่านของเรา ❤️</h3>
             <input type="password" id="pass" placeholder="DDMMYY">
-            <button class="btn" onclick="check()">ตกลง</button>
+            <button class="btn" onclick="check()">เปิดดูความลับ</button>
         </div>
     </div>
 
     <div id="main-content">
-        <h1 style="color: var(--main-color);">Happy 2nd Anniversary</h1>
-        <p>ยินดีด้วยนะ เราคบกันครบ 2 ปีแล้ว ✨</p>
+        <h1 style="color: #ff8fab; margin-top: 30px;">Happy 2nd Anniversary 🎉</h1>
+        <p>ขอบคุณที่เป็นความสุขให้กันมาตลอด 2 ปีนะ</p>
 
         <div id="menu" class="menu-grid">
-            <div class="menu-card" onclick="openS('gallery')">🖼️<br>รูปคู่</div>
-            <div class="menu-card" onclick="openS('letter')">💌<br>จดหมาย</div>
+            <div class="menu-card" onclick="openS('gallery')">🖼️<br>รูปคู่ของเรา</div>
+            <div class="menu-card" onclick="openS('letter')">💌<br>ความในใจ</div>
         </div>
 
         <div id="gallery" class="section">
-            <button onclick="home()">⬅️ กลับ</button>
-            <div class="polaroid"><img src="photo1.jpg"><p style="text-align:center;">เดทแรกของเรา</p></div>
-            <div class="polaroid" style="transform: rotate(3deg);"><img src="photo2.jpg"><p style="text-align:center;">2 ปีที่แสนดี</p></div>
+            <button class="btn" onclick="home()" style="padding: 5px 15px; font-size: 0.8rem;">⬅️ กลับ</button>
+            <div class="polaroid">
+                <img src="489953541_9418477071553292_8331388241715975210_n.jpg">
+                <p style="text-align:center; margin-top:10px;">You are my happiness ✨</p>
+            </div>
+            <div class="polaroid" style="transform: rotate(3deg);">
+                <img src="0a05c11f-77f9-4b69-97ff-c4e7d5b3ee26.jfif">
+                <p style="text-align:center; margin-top:10px;">Our Memory ❤️</p>
+            </div>
         </div>
 
         <div id="letter" class="section">
-            <button onclick="home()">⬅️ กลับ</button>
-            <h3>ถึง... เจ้าความรัก</h3>
-            <p>ขอบคุณที่อยู่ข้างกันมาตลอด 2 ปีนะ รักที่สุดเลย!</p>
+            <button class="btn" onclick="home()" style="padding: 5px 15px; font-size: 0.8rem;">⬅️ กลับ</button>
+            <h3>ถึง... เจ้าความรัก ❤️</h3>
+            <p>ยินดีด้วยนะที่เราเดินทางมาถึงปีที่ 2 แล้ว ขอบคุณที่อดทนและอยู่ข้างกันเสมอมา</p>
+            <p>เค้ารักตัวเองที่สุดเลยนะ อยู่เป็นความสดใสให้กันแบบนี้ไปนานๆ นะครับ</p>
         </div>
 
-        <audio id="music" loop><source src="music.mp3" type="audio/mpeg"></audio>
+        <audio id="music" loop>
+            <source src="fellow fellow - Best Luck.mp3" type="audio/mpeg">
+        </audio>
     </div>
 
     <script>
         function check() {
             if(document.getElementById('pass').value === "010167") {
-                document.getElementById('login-screen').style.display = 'none';
-                document.getElementById('main-content').style.display = 'block';
-                document.getElementById('music').play();
-                setInterval(createH, 400);
-            } else { alert("รหัสผ่านไม่ถูกต้อง"); }
+                document.getElementById('login-screen').style.opacity = '0';
+                setTimeout(() => {
+                    document.getElementById('login-screen').style.display = 'none';
+                    document.getElementById('main-content').style.display = 'block';
+                    document.getElementById('music').play();
+                    setInterval(createH, 400);
+                }, 800);
+            } else { alert("รหัสผ่านไม่ถูกต้องนะเจ้าตัวเล็ก!"); }
         }
         function openS(id) { 
             document.getElementById('menu').style.display = 'none';
             document.getElementById(id).style.display = 'block';
+            window.scrollTo(0,0);
         }
         function home() {
             document.getElementById('gallery').style.display = 'none';
@@ -76,7 +96,7 @@
             document.getElementById('menu').style.display = 'grid';
         }
         function createH() {
-            const h = document.createElement('div'); h.innerHTML = '❤️'; h.className = 'heart';
+            const h = document.createElement('div'); h.innerHTML = '💖'; h.className = 'heart';
             h.style.left = Math.random() * 100 + 'vw'; h.style.animationDuration = (Math.random()*2+2)+'s';
             document.body.appendChild(h); setTimeout(() => h.remove(), 4000);
         }
