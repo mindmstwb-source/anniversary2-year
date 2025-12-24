@@ -76,7 +76,7 @@
                 music.play().then(() => {
                     console.log("Music Playing!");
                 }).catch(() => {
-                    // ถ้าเบราว์เซอร์บล็อก ให้รอจิ้มหน้าจออีกรอบ
+                    // ถ้าเบราว์เซอร์บล็อก ให้รอแฟนจิ้มหน้าจออีกรอบ
                     document.body.addEventListener('click', () => { music.play(); }, { once: true });
                 });
 
